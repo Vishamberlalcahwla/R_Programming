@@ -25,28 +25,30 @@ output: html_document
 ```{r }
 #### Start solution ####
 ```
-
-
-```{r }
-
-```
-
+my_name <- c('V','i','s','h','a','m','b','e','r')
 
 ```{r }
 
 ```
-
-
-```{r }
-
-```
-
+my_name_concatenated = paste(my_name, collapse = '')
 
 ```{r }
 
 ```
+seq_number  <- seq(100, 120, length = 20)
+```{r }
 
+```
 
+even_mat = matrix(seq(0,16,2),ncol=3,byrow=TRUE)
+
+```{r }
+
+```
+my_name
+my_name_concatenated
+seq_number
+even_mat
 ```{r }
 #### End solution ####
 ```
