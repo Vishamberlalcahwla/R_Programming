@@ -63,18 +63,17 @@ even_mat
 ```{r }
 #### Start solution ####
 ```
-
-
-```{r }
-
-```
-
+people_ocupation_type <- factor(c('Employed','Unemployed','Self-Employed','Employed','Unemployed','Employed','Self-Employed','Employed','Self-Employed','Unemployed'))
 
 ```{r }
 
 ```
+table(people_ocupation_type)
 
+```{r }
 
+```
+unclass(people_ocupation_type)
 ```{r }
 
 ```
@@ -100,27 +99,38 @@ even_mat
 ```{r }
 #### Start solution ####
 ```
+bank_customers <- data.frame( CustomerID = c ('Alicia'), hasAccount = c(NA),totalBalance =c(0), stringsAsFactors = FALSE)
 
+```{r }
+
+```
+row_b <- list(CustomerID='Nancy', hasAccount=TRUE, totalBalance=10000)
+bank_customers = rbind(bank_customers,row_b, stringsAsFactors=FALSE)
+```{r }
+
+```
+row_c <- list(CustomerID='Fernando', hasAccount=TRUE, totalBalance=0)
+bank_customers = rbind(bank_customers,row_c, stringsAsFactors=FALSE)
+
+row_d <- list(CustomerID='Louis', hasAccount=NA, totalBalance=2000)
+bank_customers = rbind(bank_customers,row_d, stringsAsFactors=FALSE)
+
+
+row_e <- list(CustomerID='Diane', hasAccount=NA, totalBalance=0)
+bank_customers = rbind(bank_customers,row_e, stringsAsFactors=FALSE)
 
 ```{r }
 
 ```
 
+ncol(bank_customers)
+nrow(bank_customers)
 
 ```{r }
 
 ```
-
-
-```{r }
-
-```
-
-
-```{r }
-
-```
-
+row.names(bank_customers) <- c('a','b','c','d','e')
+bank_customers
 
 ```{r }
 #### End solution ####
@@ -132,22 +142,40 @@ even_mat
 
 ### Question 1
 **Create a variable containing a sequence of numbers from 1 to 100:**  
-1. Iterate over the variables and print those numbers which are prime.  
+1. Iterate over the variables and print those numbers which are prime. 
+library(matlab)
+for(index in 1:100){
+number =  as.logical(isprime(index)) 
+if (number == TRUE){
+print(index)
+}
+} 
+
 
 **Create a variable var with a value of 1:**  
 1. Create a while loop and increase the value of var at each iteration.   
 2. When you reach the 10th prime number, terminate the loop and print the number.  
 
 
+
+
 ```{r }
 #### Start solution ####
 ```
 
-
 ```{r }
 
 ```
-
+number = 0
+prime_count = 0
+while (prime_count <10 )
+{
+number = number + 1
+if (as.logical(isprime(number)) == TRUE){
+print(number)
+prime_count = prime_count + 1
+} 
+}
 
 ```{r }
 
@@ -181,12 +209,17 @@ even_mat
 ```{r }
 #### Start solution ####
 ```
+mat = matrix(c(8,4,5,6,7,9,6,7,9),nrow = 3, ncol = 3,byrow = TRUE)
 
 
 ```{r }
 
 ```
-
+for(row in 1:nrow(mat)) {
+    for(col in 1:ncol(mat)) {
+        print(mat[row, col])
+    }
+}
 
 ```{r }
 
@@ -226,13 +259,16 @@ even_mat
 ```{r }
 #### Start solution ####
 ```
-
+gcd <- function(x,y) {
+  r <- x%%y;
+  return(ifelse(r, gcd(y, r), y))
+}
 
 ```{r }
 
 ```
-
-
+gcd_number = gcd(1000,20)
+gcd_number
 ```{r }
 
 ```
@@ -268,12 +304,22 @@ even_mat
 ```{r }
 #### Start solution ####
 ```
-
+allConditionsMeet <- function(a,b) {
+ x <- FALSE 
+ if (a == TRUE  & b == TRUE)
+ {
+    x <- TRUE
+ }
+ else
+ {
+ x <- FALSE
+ }
+ return (x)
+}
 
 ```{r }
-
 ```
-
+print(allConditionsMeet(TRUE,TRUE))
 
 ```{r }
 
@@ -310,22 +356,33 @@ even_mat
 
 **Create a 2x2 matrix my_mat:**  
 1. Write a function to find the determinant of the matrix.  
-
-
 ```{r }
 #### Start solution ####
 ```
+my_mat <- matrix(c(4:8),nrow = 2, ncol = 2)
+
+det_fun <- function(matrix_2by2){
+  return(det(matrix_2by2))
+}
+
+det_fun(my_mat)
+
 
 
 ```{r }
 
 ```
+matrix_1 <- matrix(c(1:6),nrow = 2, ncol = 3)
+matrix_2 <- matrix(c(1:6),nrow = 3, ncol = 2)
 
+**Perform element-wise multiplication.**
+matrix_2 * matrix   
 
 ```{r }
 
 ```
-
+**Perform matrix multipilcation.**
+print(matrix_1 %*% matrix_2)
 
 ```{r }
 
@@ -359,28 +416,31 @@ even_mat
 ```{r }
 #### Start solution ####
 ```
-
-
+curr_date <- Sys.Date()
+curr_date
 ```{r }
 
 ```
-
-
+curr_time <- Sys.time()
+curr_time
 ```{r }
 
 ```
-
-
+date <- as.Date(curr_date, "%m/%d/%Y")
+date
 ```{r }
 
 ```
-
-
+time <- format(Sys.time(), "%H:%M:%S")
+time
 ```{r }
 
 ```
-
-
+library(lubridate)
+year(curr_date)
+day(curr_date)
+hour(curr_time)
+second(curr_time)
 ```{r }
 
 ```
@@ -399,17 +459,18 @@ even_mat
 ```{r }
 #### Start solution ####
 ```
+g_m_t_5 = as.POSIXct(Sys.time(),tz="GMT-5")
+g_m_t_5
+```{r }
 
+```
+m_y_timezone = Sys.time()
+m_y_timezone
 
 ```{r }
 
 ```
-
-
-```{r }
-
-```
-
+m_y_timezone - g_m_t_5
 
 ```{r }
 
@@ -443,28 +504,40 @@ even_mat
 ```{r }
 #### Start solution ####
 ```
+calculate_mean <- function(numbers){
+mean_value =  mean(numbers)
+return (mean_value)
+} 
 
+calculate_mean <- function(numbers){
+sd_value  <- sd(unlist(numbers))
+return (sd_value)
+}
 
-```{r }
-
-```
-
-
-```{r }
-
-```
-
-
-```{r }
-
-```
-
+numbers <- list(seq(100, 150))
 
 ```{r }
 
 ```
+lapply(numbers, calculate_mean)
 
+```{r }
 
+```
+sapply(numbers, sum)
+```{r }
+
+```
+
+m1 <- matrix(unlist(numbers),nrow=5, ncol=6)
+m1
+a_m1 <- apply(m1, 2, sum)
+a_m1
+
+```{r }
+
+```
+tapply(m1, m1[0], mean)
 ```{r }
 
 ```
@@ -483,17 +556,20 @@ even_mat
 ```{r }
 #### Start solution ####
 ```
+m_4 <- matrix(seq(1:16),nrow=4, ncol=4)
+m_4
 
 
 ```{r }
 
 ```
-
-
+a_m1 <- apply(m_4, 2, calculate_mean)
+a_m1
 ```{r }
 
 ```
-
+a_m1 <- apply(m_4, 1, calculate_mean)
+a_m1
 
 ```{r }
 
@@ -541,23 +617,27 @@ head(Orange)
 ```{r }
 #### Start solution ####
 ```
+ 
+split_data <- as.data.frame(Orange)
+split_data
+```{r }
 
+```
+**Print the values for split_data where circumference is 30 and 75.**  
+split_data[split_data$circumference == "30", ]                                   
+split_data[split_data$circumference == "75", ]                                   
+ 
+```{r }
 
+```
+age_list <- split_data[split_data$circumference == 30, ]
+mean(as.numeric(age_list[, "age"]))
 ```{r }
 
 ```
 
-
-```{r }
-
-```
-
-
-```{r }
-
-```
-
-
+age_list <- split_data[split_data$circumference == 214, ]
+mean(as.numeric(age_list[, "age"]))
 ```{r }
 
 ```
